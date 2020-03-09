@@ -1,0 +1,39 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      stochasticFieldsProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+nStochasticFields       0; //16;//32;//64;//128;
+Cphi                    Cphi    [0 0 0 0 0] 2.0;
+maxMixFrc               maxMixFrc    [0 0 0 0 0] 1;
+maxProgVar              maxProgVar    [0 0 0 0 0] 0.3;
+writeWienerSources      off; //on;
+readStochasticFields    off;
+writeStochasticFields   off;
+writeSpeciesStochasticFields   off;
+dichotomicVectorsSym    off;
+transportPVf            on;
+nonReacting             off;
+C_wFactor               C_wFactor    [0 0 0 0 0] 7.0;
+removeStochasticNoise   off;
+balanceWienerTerm       off;
+
+setReactingBox         off;//on;
+reactingBoxCenter      (0.25 0. 0.);
+reactingBoxL           0.5; //spark size in x direction
+reactingBoxW           0.1; //spark size in y direction
+reactingBoxH           0.1; //spark size in z direction
+
+// ************************************************************************* //

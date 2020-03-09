@@ -1,0 +1,131 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     rhoReactingFoam;
+
+startFrom       latestTime;
+//startFrom        startTime;
+
+
+startTime       latestTime;
+
+stopAt          endTime;
+
+endTime         1;
+
+deltaT          1e-6;
+
+maxDeltaT       1e-6;
+
+writeControl    adjustableRunTime;
+
+writeInterval    0.02;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+adjustTimeStep    yes;
+
+maxCo           0.3;
+
+
+
+functions
+{
+   fieldAverage1
+    {
+        type            fieldAverage;
+        functionObjectLibs ( "libfieldFunctionObjects.so" );
+        enabled         true;//false;
+        outputControl   outputTime;
+	resetOnRestart  false;
+
+        fields
+        (
+            U
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            }
+            
+            PV
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            }
+           
+            CH4
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            } 
+          
+	    CO2
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            } 
+            
+	    CO
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            } 
+            
+ 	    OH
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            } 
+            
+	    T
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            }
+            
+            f
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            }
+      );
+    }
+}
+
+
+
+// ************************************************************************* //
